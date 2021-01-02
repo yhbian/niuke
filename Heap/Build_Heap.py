@@ -10,7 +10,7 @@ class MinTopHeap:
             self._build_heap_from_list()
 
     def _swap(self, idx_1, idx_2):  # idx starts from 0
-        if not (0 <= idx_1 < len(self.heap) or 0 <= idx_2 < len(self.heap)):
+        if not (0 <= idx_1 < len(self.heap) and 0 <= idx_2 < len(self.heap)):
             raise IndexError("Index out of range!")
         if not idx_1 == idx_2:
             temp = self.heap[idx_1]
