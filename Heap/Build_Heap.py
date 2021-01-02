@@ -1,7 +1,7 @@
 import time
 
 
-class Heap:
+class MinTopHeap:
     def __init__(self, init_list=None):
         # small top heap
         self.heap = []
@@ -81,7 +81,7 @@ class Heap:
 
 if __name__ == '__main__':
     init_list = [8, 5, 2, 9, 3, 7, 1, 4, 6]
-    heap = Heap(init_list=init_list)
+    heap = MinTopHeap(init_list=init_list)
     print(heap.heap)
     print(heap.heap_sort())
 
