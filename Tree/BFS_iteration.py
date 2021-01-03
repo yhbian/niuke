@@ -10,7 +10,6 @@ def bfs_iteration(root):
     while len(node_list):
         new_list = []
         for node in node_list:
-            print(node.val)
             if node.left is not None:
                 new_list.append(node.left)
             if node.right is not None:

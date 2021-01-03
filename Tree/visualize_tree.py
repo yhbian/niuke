@@ -6,5 +6,4 @@ def _visualize_tree(root):
         print(root.val)
         _visualize_tree(root.left)
         _visualize_tree(root.right)
-    else:
         return
