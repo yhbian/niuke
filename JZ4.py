@@ -1,3 +1,11 @@
+def _pre_order_traversal(root):
+    if root is not None:
+        print(root.val)
+        _pre_order_traversal(root.left)
+        _pre_order_traversal(root.right)
+    return
+
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
@@ -7,24 +15,31 @@ class TreeNode:
 
 class Solution:
     # 返回构造的TreeNode根节点
+    def __init__(self):
+        self.root = None
+
+    def split(self, pre, tin):
+        this_root = pre[0]
+        idx = tin.index(this_root)
+        left_tin, right_tin = tin[:idx], tin[idx+1:]
+        left_pre, right_pre = pre[1: 1+idx], pre[1+idx:]
+        return left_pre, right_pre, left_tin, right_tin
+
     def reConstructBinaryTree(self, pre, tin):
         # write code here
-        # TODO:
-        pass
+        if not pre:
+            return None
+        if pre:
+            root = TreeNode(pre[0])
+            left_pre, right_pre, left_tin, right_tin = self.split(pre, tin)
+            root.left = self.reConstructBinaryTree(left_pre, left_tin)
+            root.right = self.reConstructBinaryTree(right_pre, right_tin)
+            return root
 
 
 if __name__ == '__main__':
     # define Tree
-    leaf1 = TreeNode(5)
-    leaf2 = TreeNode(7)
-    leaf3 = TreeNode(9)
-    leaf4 = TreeNode(11)
-    left_branch = TreeNode(6)
-    left_branch.left = leaf1
-    left_branch.right = leaf2
-    right_branch = TreeNode(10)
-    right_branch.left = leaf3
-    right_branch.right = leaf4
-    root = TreeNode(8)
-    root.left = left_branch
-    root.right = right_branch
+    pre, tin = [1, 2, 3, 4, 5, 6, 7], [3, 2, 4, 1, 6, 5, 7]
+    solution = Solution()
+    root = solution.reConstructBinaryTree(pre, tin)
+    _pre_order_traversal(root)
