@@ -27,7 +27,6 @@ class Solution:
         self.nodes[-1].right = None
         for idx in range(len(self.nodes)-1, 0, -1):
             self.nodes[idx].left = self.nodes[idx-1]
-            print(self.nodes[idx-1].val)
         self.nodes[0].left = None
         return self.nodes[0]
 
