@@ -27,7 +27,7 @@ class Solution:
                 self.trace = [start]  # init the trace
                 self.hasPath(matrix, rows, cols, path, step=1, start=start)
 
-        # for exceeding steps
+        # for succeeding steps
         anchor = start
         for candidate in [anchor - 1, anchor + 1, anchor - cols, anchor + cols]:
             if 0 <= candidate < rows * cols and candidate not in self.trace:
